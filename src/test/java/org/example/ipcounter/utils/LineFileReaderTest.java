@@ -24,7 +24,7 @@ public class LineFileReaderTest {
     }
 
     @Test
-    public void readFileTest() {
+    public void readFileTest() throws Exception {
         final URL url = getClass().getClassLoader().getResource("sample.txt");
         Assertions.assertNotNull(url);
         try (final LineFileReader reader = new LineFileReader(url.getFile())) {
@@ -33,8 +33,6 @@ public class LineFileReaderTest {
                 line = reader.next();
             } while (line != null);
             Assertions.assertEquals(12, reader.getTotal());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 
